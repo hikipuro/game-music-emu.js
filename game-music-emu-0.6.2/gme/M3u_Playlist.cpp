@@ -4,6 +4,7 @@
 #include "Music_Emu.h"
 
 #include <string.h>
+#include <emscripten.h>
 
 /* Copyright (C) 2006 Shay Green. This module is free software; you
 can redistribute it and/or modify it under the terms of the GNU Lesser
@@ -52,8 +53,10 @@ blargg_err_t Gme_File::load_m3u( const char* path ) { return load_m3u_( playlist
 
 blargg_err_t Gme_File::load_m3u( Data_Reader& in )  { return load_m3u_( playlist.load( in ) ); }
 
+EMSCRIPTEN_KEEPALIVE
 BLARGG_EXPORT gme_err_t gme_load_m3u( Music_Emu* me, const char* path ) { return me->load_m3u( path ); }
 
+EMSCRIPTEN_KEEPALIVE
 BLARGG_EXPORT gme_err_t gme_load_m3u_data( Music_Emu* me, const void* data, long size )
 {
 	Mem_File_Reader in( data, size );

@@ -145,7 +145,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 # Add library to be compiled.
 #add_library(gme ${libgme_SRCS})
 
-set(EMCC_LINKER_FLAGS "-Oz --post-js ../../post.js -s ASSERTIONS=1 -s EXTRA_EXPORTED_RUNTIME_METHODS='[\"_malloc\", \"ccall\", \"cwrap\", \"getValue\", \"setValue\", \"UTF8ToString\"]'")
+set(EMCC_LINKER_FLAGS "-Oz --post-js ../../post.js -s ASSERTIONS=1 -s EXTRA_EXPORTED_RUNTIME_METHODS='[\"ccall\", \"cwrap\", \"setValue\", \"getValue\", \"Pointer_stringify\", \"UTF8ToString\", \"stringToUTF8\", \"UTF16ToString\", \"stringToUTF16\", \"UTF32ToString\", \"stringToUTF32\", \"intArrayFromString\", \"intArrayToString\", \"writeStringToMemory\", \"writeArrayToMemory\", \"writeAsciiToMemory\", \"addRunDependency\", \"removeRunDependency\", \"stackTrace\"]'")
 set(CMAKE_REQUIRED_FLAGS "${EMCC_LINKER_FLAGS}")
 add_executable(gme ${libgme_SRCS})
 set_target_properties(gme PROPERTIES LINK_FLAGS "${EMCC_LINKER_FLAGS}")
